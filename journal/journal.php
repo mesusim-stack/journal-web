@@ -74,6 +74,29 @@ if (isset($_GET['edit']) && !empty($_GET['edit'])) {
             background-color: rgba(255, 77, 77, 0.2);
             border-color: #ff4d4d;
         }
+
+        textarea[name="content"] {
+            height: 300px;
+            width: 100%;
+            background-color: black;
+            resize: none;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            padding: 10px;
+            border: 3px solid #5cdb5c;
+            border-radius: 8px;
+        }
+
+        textarea[name="content"]::placeholder {
+            color: #888;
+        }
+        
+        textarea[name="content"]:focus {
+            outline: none;
+            border-color: #ff4d4d;
+            box-shadow: 0 0 10px #ff4d4d;
+        }
     </style>
 </head>
 <body>
