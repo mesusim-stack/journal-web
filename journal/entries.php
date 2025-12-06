@@ -1,3 +1,51 @@
+<?php
+require_once 'check_session.php'; // Ensures user is logged in
+require_once '../db/config.php';   // Database connection
+
+$user_id = $_SESSION['user_id'];
+$username = $_SESSION['username'];
+$entries = [];
+$total_entries = 0;
+$total_words = 0;
+$first_entry_date = '--';
+$last_entry_date = '--';
+
+try {
+    // Fetch all entries for the logged-in user
+    $q_entries = "SELECT id, title, content, coordinates, tags, word_count, character_count, created_at, updated_at FROM journal_entries WHERE user_id = :user_id ORDER BY created_at DESC";
+    $stmt_entries = $conn->prepare($q_entries);
+    $stmt_entries->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt_entries->execute();
+    $entries = $stmt_entries->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calculate statistics
+    $total_entries = count($entries);
+    foreach ($entries as $entry) {
+        $total_words += $entry['word_count'];
+    }
+
+    if ($total_entries > 0) {
+        // Sort to find first and last entry dates
+        // Need to re-fetch or clone $entries because usort modifies the array in-place
+        $entries_for_dates = $entries; 
+        usort($entries_for_dates, function($a, $b) {
+            return strtotime($a['created_at']) - strtotime($b['created_at']);
+        });
+        $first_entry_date = date('M d, Y', strtotime($entries_for_dates[0]['created_at']));
+
+        // Reset sort for last entry if needed, or get from already sorted
+        usort($entries_for_dates, function($a, $b) {
+            return strtotime($b['created_at']) - strtotime($a['created_at']); // Sort descending for last entry
+        });
+        $last_entry_date = date('M d, Y', strtotime($entries_for_dates[0]['created_at']));
+    }
+
+
+} catch (PDOException $e) {
+    error_log("Error fetching journal entries: " . $e->getMessage());
+    $_SESSION['error_message'] = 'Failed to load journal entries.';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +133,7 @@
             flex-wrap: wrap;
         }
         
-        .entry-content {
+    .entry-content {
             color: #e0e0e0;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -186,55 +234,7 @@
         }
     </style>
 </head>
-<body class="entries-page">
-    <?php
-        require_once 'check_session.php'; // Ensures user is logged in
-        require_once '../db/config.php';   // Database connection
-
-        $user_id = $_SESSION['user_id'];
-        $username = $_SESSION['username'];
-        $entries = [];
-        $total_entries = 0;
-        $total_words = 0;
-        $first_entry_date = '--';
-        $last_entry_date = '--';
-
-        try {
-            // Fetch all entries for the logged-in user
-            $q_entries = "SELECT id, title, content, coordinates, tags, word_count, character_count, created_at, updated_at FROM journal_entries WHERE user_id = :user_id ORDER BY created_at DESC";
-            $stmt_entries = $conn->prepare($q_entries);
-            $stmt_entries->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $stmt_entries->execute();
-            $entries = $stmt_entries->fetchAll(PDO::FETCH_ASSOC);
-
-            // Calculate statistics
-            $total_entries = count($entries);
-            foreach ($entries as $entry) {
-                $total_words += $entry['word_count'];
-            }
-
-            if ($total_entries > 0) {
-                // Sort to find first and last entry dates
-                // Need to re-fetch or clone $entries because usort modifies the array in-place
-                $entries_for_dates = $entries; 
-                usort($entries_for_dates, function($a, $b) {
-                    return strtotime($a['created_at']) - strtotime($b['created_at']);
-                });
-                $first_entry_date = date('M d, Y', strtotime($entries_for_dates[0]['created_at']));
-
-                // Reset sort for last entry if needed, or get from already sorted
-                usort($entries_for_dates, function($a, $b) {
-                    return strtotime($b['created_at']) - strtotime($a['created_at']); // Sort descending for last entry
-                });
-                $last_entry_date = date('M d, Y', strtotime($entries_for_dates[0]['created_at']));
-            }
-
-
-        } catch (PDOException $e) {
-            error_log("Error fetching journal entries: " . $e->getMessage());
-            $_SESSION['error_message'] = 'Failed to load journal entries.';
-        }
-    ?>
+<body>
     <?php
         if (isset($_SESSION['success_message'])) {
             echo '<div class="alert success-message">' . $_SESSION['success_message'] . '</div>';
