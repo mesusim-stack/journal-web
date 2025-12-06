@@ -1,0 +1,755 @@
+/* journal.css - Minecraft Journal Page */
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: #f0f0f0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Background Image */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background-image: url('https://wallpapercave.com/wp/wp12502109.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -9;
+}
+
+/* Pixel Text Style */
+.pixel-text {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* Header Styles */
+.minecraft-header {
+    background-color: rgba(20, 20, 20, 0.85);
+    padding: 15px 0;
+    border-bottom: 5px solid #3a7d34;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.minecraft-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    display: flex;
+    gap: 5px;
+}
+
+.logo-block {
+    width: 20px;
+    height: 30px;
+    border: 2px solid #000;
+}
+
+.logo-block.grass {
+    background-color: #7CFC00;
+}
+
+.logo-block.diamond {
+    background-color: #4EE2EC;
+}
+
+.logo-block.book {
+    background-color: #8B4513;
+}
+
+.logo h1 {
+    font-size: 1.4rem;
+    color: #5cdb5c;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.pixel-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pixel-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #3a7d34;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-bottom: 4px solid #2d5c29;
+    border-right: 4px solid #2d5c29;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.pixel-button:hover {
+    background-color: #4a9e42;
+}
+
+.pixel-button:active {
+    border-bottom: 2px solid #2d5c29;
+    border-right: 2px solid #2d5c29;
+}
+
+.pixel-button.active {
+    background-color: #5cdb5c;
+    border-bottom: 4px solid #4a9e4a;
+    border-right: 4px solid #4a9e4a;
+}
+
+.logout-btn {
+    background-color: #e64a4a;
+    border-bottom: 4px solid #b33a3a;
+    border-right: 4px solid #b33a3a;
+}
+
+.logout-btn:hover {
+    background-color: #ff5c5c;
+}
+
+/* Main Content */
+.scrollable-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+    padding: 30px 0;
+}
+
+/* Welcome Section */
+.welcome-section {
+    text-align: center;
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.welcome-title {
+    font-size: 2.2rem;
+    color: #5cdb5c;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.welcome-subtitle {
+    font-size: 1rem;
+    color: #d0d0d0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.current-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(92, 219, 92, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #5cdb5c;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+}
+
+.current-date i {
+    color: #5cdb5c;
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: #5cdb5c;
+}
+
+/* Journal Section */
+.journal-section {
+    background-color: rgba(20, 20, 20, 0.9);
+    border: 8px solid #3a7d34;
+    padding: 40px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.entry-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.save-btn {
+    background-color: #5cdb5c;
+    border-bottom: 4px solid #4a9e4a;
+    border-right: 4px solid #4a9e4a;
+}
+
+.save-btn:hover {
+    background-color: #6eeb6e;
+}
+
+.clear-btn {
+    background-color: #e64a4a;
+    border-bottom: 4px solid #b33a3a;
+    border-right: 4px solid #b33a3a;
+}
+
+.clear-btn:hover {
+    background-color: #ff5c5c;
+}
+
+/* Writing Space Container */
+.writing-space-container {
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 8px;
+    border: 4px solid #5b5b5b;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.writing-header {
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 20px;
+    border-bottom: 2px solid #5b5b5b;
+}
+
+.entry-title {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.entry-title:focus {
+    outline: none;
+    border-bottom: 2px solid #5cdb5c;
+}
+
+.entry-title::placeholder {
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.entry-meta {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.meta-item i {
+    color: #4EE2EC;
+    width: 20px;
+}
+
+.coordinate-input, .tags-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #d0d0d0;
+    padding: 8px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+}
+
+.coordinate-input:focus, .tags-input:focus {
+    outline: none;
+    border-bottom: 1px solid #4EE2EC;
+}
+
+.coordinate-input::placeholder, .tags-input::placeholder {
+    color: #666;
+}
+
+/* Writing Area (Eye-friendly) */
+.writing-area {
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 30px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+.writing-area:focus {
+    outline: none;
+}
+
+.placeholder-text {
+    color: #888;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.placeholder-text ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.placeholder-text li {
+    margin-bottom: 5px;
+}
+
+.writing-area::-webkit-scrollbar {
+    width: 10px;
+}
+
+.writing-area::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.writing-area::-webkit-scrollbar-thumb {
+    background: #3a7d34;
+    border-radius: 5px;
+}
+
+.writing-area::-webkit-scrollbar-thumb:hover {
+    background: #4a9e42;
+}
+
+.writing-footer {
+    background-color: rgba(30, 30, 30, 0.9);
+    padding: 15px 30px;
+    border-top: 2px solid #5b5b5b;
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.word-count, .character-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.word-count i, .character-count i {
+    color: #4EE2EC;
+}
+
+/* Saved Entries */
+.saved-entries {
+    background-color: rgba(30, 30, 30, 0.7);
+    padding: 25px;
+    border-radius: 8px;
+    border: 3px solid #5b5b5b;
+    margin-top: 30px;
+}
+
+.saved-entries h3 {
+    color: #5cdb5c;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #5b5b5b;
+}
+
+.empty-state p {
+    font-size: 1rem;
+}
+
+.saved-entry {
+    background-color: rgba(40, 40, 40, 0.8);
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #5cdb5c;
+    cursor: pointer;
+}
+
+.saved-entry:hover {
+    background-color: rgba(50, 50, 50, 0.9);
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.entry-header h4 {
+    color: #5cdb5c;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.entry-date {
+    color: #888;
+    font-size: 0.8rem;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.entry-preview {
+    color: #b0b0b0;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry-meta {
+    color: #888;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.entry-meta i {
+    margin-right: 5px;
+}
+
+.entry-action {
+    background: transparent;
+    border: none;
+    color: #e64a4a;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.entry-action:hover {
+    background-color: rgba(230, 74, 74, 0.1);
+}
+
+/* Bible Verses Section */
+.verses-section {
+    background-color: rgba(20, 20, 20, 0.9);
+    border: 8px solid #4EE2EC;
+    padding: 40px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.refresh-btn {
+    background-color: #4EE2EC;
+    border-bottom: 4px solid #2a8b94;
+    border-right: 4px solid #2a8b94;
+}
+
+.refresh-btn:hover {
+    background-color: #6ef2fc;
+}
+
+.verses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.verse-card {
+    background-color: rgba(40, 40, 40, 0.8);
+    padding: 25px;
+    border-radius: 8px;
+    border: 3px solid #3a7d34;
+}
+
+.verse-reference {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4EE2EC;
+    margin-bottom: 15px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+}
+
+.verse-reference i {
+    font-size: 1rem;
+}
+
+.verse-text {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.verse-reflection {
+    color: #5cdb5c;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding-top: 15px;
+    border-top: 1px solid #5b5b5b;
+}
+
+/* Tools Section */
+.tools-section {
+    background-color: rgba(20, 20, 20, 0.9);
+    border: 8px solid #FFD700;
+    padding: 40px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.tool-card {
+    background-color: rgba(40, 40, 40, 0.8);
+    padding: 25px;
+    border-radius: 8px;
+    border: 3px solid #5b5b5b;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tool-card:hover {
+    border-color: #5cdb5c;
+    background-color: rgba(50, 50, 50, 0.9);
+}
+
+.tool-icon {
+    font-size: 2.5rem;
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.tool-card h3 {
+    color: #5cdb5c;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.tool-card p {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.minecraft-footer {
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 25px 0;
+    border-top: 5px solid #3a7d34;
+    text-align: center;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.minecraft-footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.link {
+    color: #5cdb5c;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #6eeb6e;
+    text-decoration: underline;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(40, 40, 40, 0.95);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: 3px solid #5cdb5c;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast.success {
+    border-color: #5cdb5c;
+}
+
+.toast.error {
+    border-color: #e64a4a;
+}
+
+.toast.info {
+    border-color: #4EE2EC;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 1.6rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .journal-section, .verses-section, .tools-section {
+        padding: 25px 20px;
+    }
+    
+    .writing-area {
+        min-height: 300px;
+        padding: 20px;
+        font-size: 1rem;
+    }
+    
+    .verses-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .entry-meta {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .meta-item {
+        min-width: 100%;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .entry-controls {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .minecraft-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .toast {
+        width: 90%;
+        text-align: center;
+        font-size: 0.7rem;
+        padding: 10px 20px;
+    }
+}
