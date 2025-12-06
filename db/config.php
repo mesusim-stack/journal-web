@@ -3,7 +3,7 @@
 $host = 'localhost';
 $port = 5433;
 $user = 'postgres';
-$dbname = 'FinalsDatabase';
+$dbname = 'final_final';
 $pass = 'zhaina10';
 
 try {

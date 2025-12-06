@@ -230,216 +230,215 @@
                 </div>
                 <h1 class="pixel-text">About Minecraft Journal</h1>
             </div>
-            <nav class="pixel-nav">
-                <ul>
-                    <li><a href="index.html" class="pixel-button"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="about.html" class="pixel-button active"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="index.html#features" class="pixel-button"><i class="fas fa-star"></i> Features</a></li>
-                    <li><a href="index.html#login" class="pixel-button"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="scrollable-content">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h2 class="pixel-text hero-title">Hello, Adventurers! 👋</h2>
-                    <p class="pixel-text hero-subtitle">We're so excited to have you here in our Minecraft Journal community!</p>
-                    
-                    <div class="friendly-message">
-                        <p class="pixel-text" style="font-size: 0.9rem; color: #d0d0d0; text-shadow: none;">
-                            <i class="fas fa-heart" style="color: #FF6B6B; margin-right: 10px;"></i>
-                            Welcome to our cozy corner of the Minecraft universe! We built this journal with love for every block-placer, cave-explorer, and mob-battler out there. Whether you're a seasoned veteran or just starting your first world, we're glad you're here!
-                        </p>
+                        <nav class="pixel-nav">
+                            <ul>
+                                <li><a href="index.php" class="pixel-button"><i class="fas fa-home"></i> Home</a></li>
+                                <li><a href="about.php" class="pixel-button active"><i class="fas fa-info-circle"></i> About</a></li>
+                                <li><a href="index.php#features" class="pixel-button"><i class="fas fa-star"></i> Features</a></li>
+                                <li><a href="login.php" class="pixel-button"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                            </ul>
+                        </nav>
                     </div>
-                </div>
-            </section>
-
-            <!-- Our Story Section -->
-            <section class="our-story">
-                <h2 class="pixel-text section-title"><i class="fas fa-book"></i> Our Story</h2>
-                <div class="story-content">
-                    <div class="story-text">
-                        <p class="pixel-text">Minecraft Journal was born from our own love of documenting adventures in the blocky world we all adore. We noticed that while Minecraft gives us incredible stories to tell, there wasn't a perfect place to preserve those memories.</p>
-                        <p class="pixel-text">So we thought: <span class="highlight">"Why not create a digital journal made just for Minecrafters?"</span></p>
-                        <p class="pixel-text">What started as a simple idea between two friends has grown into this platform where thousands of players now share their builds, adventures, and creative projects. Every day, we're inspired by the amazing stories you all share!</p>
-                    </div>
-                    <div class="story-image">
-                        <div class="story-block">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Creators Section -->
-            <section class="creator-section">
-                <h2 class="pixel-text section-title"><i class="fas fa-users"></i> Meet the Creative Team</h2>
-                <p class="section-subtitle">The passionate builders behind Minecraft Journal</p>
-                
-                <div class="creators-grid">
-                    <!-- Creator 1 -->
-                    <div class="creator-card">
-                        <div class="creator-avatar me">
-                            <i class="fas fa-user-astronaut"></i>
-                        </div>
-                        <div class="creator-info">
-                            <h3 class="pixel-text">Alex (That's Me! 👋)</h3>
-                            <span class="creator-role">Lead Developer & Minecraft Enthusiast</span>
-                            <p class="creator-bio">Hey there! I'm Alex, and I've been playing Minecraft since the beta days. I love creating redstone contraptions that barely work and building elaborate castles that I never finish. When I'm not coding this journal platform, you can find me exploring caves or trying to tame every cat I find in villages!</p>
-                            <p class="creator-bio">My favorite Minecraft memory: Finding my first diamond after 3 hours of mining on my very first world. I still have that diamond pickaxe saved in a chest!</p>
-                            <div class="creator-social">
-                                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                                <a href="#" title="Minecraft"><i class="fas fa-cube"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Creator 2 -->
-                    <div class="creator-card">
-                        <div class="creator-avatar aicelle">
-                            <i class="fas fa-user-ninja"></i>
-                        </div>
-                        <div class="creator-info">
-                            <h3 class="pixel-text">Aicelle 🎨</h3>
-                            <span class="creator-role">Designer & Community Manager</span>
-                            <p class="creator-bio">Hello fellow crafters! I'm Aicelle, and I believe every Minecraft world tells a unique story. As the designer, I've worked to make this journal as cozy and welcoming as your favorite Minecraft cabin. I'm all about aesthetics—whether it's creating beautiful builds or designing user-friendly interfaces.</p>
-                            <p class="creator-bio">My Minecraft specialty: Creating intricate interior designs for buildings. Give me any empty structure and I'll turn it into a cozy home with just torches, carpets, and flower pots!</p>
-                            <div class="creator-social">
-                                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" title="Pinterest"><i class="fab fa-pinterest"></i></a>
-                                <a href="#" title="Minecraft"><i class="fas fa-palette"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="friendly-message" style="margin-top: 30px;">
-                    <p class="pixel-text" style="font-size: 0.9rem; color: #d0d0d0; text-shadow: none;">
-                        <i class="fas fa-comments" style="color: #4EE2EC; margin-right: 10px;"></i>
-                        <strong>We'd love to hear from you!</strong> Got ideas for the journal? Found a bug? Just want to share your latest build? Reach out anytime—we read every message and love connecting with our community!
-                    </p>
-                </div>
-            </section>
-
-            <!-- Our Mission Section -->
-            <section class="mission-section">
-                <h2 class="pixel-text section-title"><i class="fas fa-bullseye"></i> Our Mission</h2>
-                <p class="section-subtitle">What drives us every day</p>
-                
-                <div class="mission-grid">
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-memory"></i>
-                        </div>
-                        <h3 class="pixel-text">Preserve Memories</h3>
-                        <p>Help players save their Minecraft stories so they can look back years later and relive their adventures.</p>
-                    </div>
-                    
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h3 class="pixel-text">Build Community</h3>
-                        <p>Create a friendly space where Minecrafters can share ideas, inspire each other, and make new friends.</p>
-                    </div>
-                    
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="pixel-text">Spark Creativity</h3>
-                        <p>Provide tools and inspiration to help players plan and execute their dream builds and adventures.</p>
-                    </div>
-                    
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-laugh-beam"></i>
-                        </div>
-                        <h3 class="pixel-text">Spread Joy</h3>
-                        <p>Make Minecraft even more enjoyable by celebrating every achievement, big or small!</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Fun Facts Section -->
-            <section class="creator-section" style="border-color: #FF6B6B;">
-                <h2 class="pixel-text section-title"><i class="fas fa-star"></i> Fun Facts About Us</h2>
-                <div class="story-content">
-                    <div class="story-text">
-                        <ul style="color: #d0d0d0; line-height: 1.8; padding-left: 20px;">
-                            <li>We've been playing Minecraft together since 2015 on the same server!</li>
-                            <li>This journal website was inspired by our own messy collection of screenshots and notes.</li>
-                            <li>Alex once built a working calculator in Minecraft using redstone (it took 3 weeks!).</li>
-                            <li>Aicelle holds the record in our friend group for most cats collected in one house: 27!</li>
-                            <li>We test every new feature by playing Minecraft together every Friday night.</li>
-                            <li>Our first version of this journal was just a shared Google Doc back in 2020.</li>
-                            <li>We've never actually defeated the Ender Dragon in our shared survival world... we're too busy building!</li>
-                        </ul>
-                    </div>
-                    <div class="story-image">
-                        <div class="story-block" style="border-color: #FF6B6B;">
-                            <i class="fas fa-grin-stars"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Back Button -->
-            <div class="back-button-container">
-                <a href="index.html" class="pixel-button back-button">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </a>
-                <p class="pixel-text" style="margin-top: 15px; font-size: 0.7rem; color: #b0b0b0;">
-                    P.S. You can also use your browser's back button to return to the previous page! ←
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="minecraft-footer">
-        <div class="container">
-            <p class="pixel-text">Made with ❤️ by Alex & Aicelle | Minecraft Journal &copy; 2023</p>
-            <div class="footer-links">
-                <a href="index.html" class="pixel-text link"><i class="fas fa-home"></i> Home</a>
-                <a href="#" class="pixel-text link"><i class="fas fa-envelope"></i> Contact Us</a>
-                <a href="#" class="pixel-text link"><i class="fas fa-heart"></i> Support Our Work</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Friendly greeting when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("%c✨ Welcome to our About page! ✨", "color: #5cdb5c; font-size: 18px; font-weight: bold;");
-            console.log("%cThanks for checking out our story! We hope you love Minecraft Journal as much as we do!", "color: #4EE2EC; font-size: 14px;");
+                </header>
             
-            // Add some interactive fun
-            const creatorCards = document.querySelectorAll('.creator-card');
-            creatorCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
-                });
-            });
-        });
-        
-        // Make back button work with browser history
-        document.querySelector('.back-button').addEventListener('click', function(e) {
-            // Check if we came from another page in our site
-            if (document.referrer && document.referrer.includes(window.location.hostname)) {
-                e.preventDefault();
-                window.history.back();
-            }
-        });
-    </script>
-</body>
-</html>
+                <!-- Main Content -->
+                <main class="scrollable-content">
+                    <div class="container">
+                        <!-- Hero Section -->
+                        <section class="hero-section">
+                            <div class="hero-content">
+                                <h2 class="pixel-text hero-title">Hello, Adventurers! 👋</h2>
+                                <p class="pixel-text hero-subtitle">We're so excited to have you here in our Minecraft Journal community!</p>
+                                
+                                <div class="friendly-message">
+                                    <p class="pixel-text" style="font-size: 0.9rem; color: #d0d0d0; text-shadow: none;">
+                                        <i class="fas fa-heart" style="color: #FF6B6B; margin-right: 10px;"></i>
+                                        Welcome to our cozy corner of the Minecraft universe! We built this journal with love for every block-placer, cave-explorer, and mob-battler out there. Whether you're a seasoned veteran or just starting your first world, we're glad you're here!
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+            
+                        <!-- Our Story Section -->
+                        <section class="our-story">
+                            <h2 class="pixel-text section-title"><i class="fas fa-book"></i> Our Story</h2>
+                            <div class="story-content">
+                                <div class="story-text">
+                                    <p class="pixel-text">Minecraft Journal was born from our own love of documenting adventures in the blocky world we all adore. We noticed that while Minecraft gives us incredible stories to tell, there wasn't a perfect place to preserve those memories.</p>
+                                    <p class="pixel-text">So we thought: <span class="highlight">"Why not create a digital journal made just for Minecrafters?"</span></p>
+                                    <p class="pixel-text">What started as a simple idea between two friends has grown into this platform where thousands of players now share their builds, adventures, and creative projects. Every day, we're inspired by the amazing stories you all share!</p>
+                                </div>
+                                <div class="story-image">
+                                    <div class="story-block">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+            
+                        <!-- Creators Section -->
+                        <section class="creator-section">
+                            <h2 class="pixel-text section-title"><i class="fas fa-users"></i> Meet the Creative Team</h2>
+                            <p class="section-subtitle">The passionate builders behind Minecraft Journal</p>
+                            
+                            <div class="creators-grid">
+                                <!-- Creator 1 -->
+                                <div class="creator-card">
+                                    <div class="creator-avatar me">
+                                        <i class="fas fa-user-astronaut"></i>
+                                    </div>
+                                    <div class="creator-info">
+                                        <h3 class="pixel-text">Alex (That's Me! 👋)</h3>
+                                        <span class="creator-role">Lead Developer & Minecraft Enthusiast</span>
+                                        <p class="creator-bio">Hey there! I'm Alex, and I've been playing Minecraft since the beta days. I love creating redstone contraptions that barely work and building elaborate castles that I never finish. When I'm not coding this journal platform, you can find me exploring caves or trying to tame every cat I find in villages!</p>
+                                        <p class="creator-bio">My favorite Minecraft memory: Finding my first diamond after 3 hours of mining on my very first world. I still have that diamond pickaxe saved in a chest!</p>
+                                        <div class="creator-social">
+                                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                                            <a href="#" title="Minecraft"><i class="fas fa-cube"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Creator 2 -->
+                                <div class="creator-card">
+                                    <div class="creator-avatar aicelle">
+                                        <i class="fas fa-user-ninja"></i>
+                                    </div>
+                                    <div class="creator-info">
+                                        <h3 class="pixel-text">Aicelle 🎨</h3>
+                                        <span class="creator-role">Designer & Community Manager</span>
+                                        <p class="creator-bio">Hello fellow crafters! I'm Aicelle, and I believe every Minecraft world tells a unique story. As the designer, I've worked to make this journal as cozy and welcoming as your favorite Minecraft cabin. I'm all about aesthetics—whether it's creating beautiful builds or designing user-friendly interfaces.</p>
+                                        <p class="creator-bio">My Minecraft specialty: Creating intricate interior designs for buildings. Give me any empty structure and I'll turn it into a cozy home with just torches, carpets, and flower pots!</p>
+                                        <div class="creator-social">
+                                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                            <a href="#" title="Pinterest"><i class="fab fa-pinterest"></i></a>
+                                            <a href="#" title="Minecraft"><i class="fas fa-palette"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="friendly-message" style="margin-top: 30px;">
+                                <p class="pixel-text" style="font-size: 0.9rem; color: #d0d0d0; text-shadow: none;">
+                                    <i class="fas fa-comments" style="color: #4EE2EC; margin-right: 10px;"></i>
+                                    <strong>We'd love to hear from you!</strong> Got ideas for the journal? Found a bug? Just want to share your latest build? Reach out anytime—we read every message and love connecting with our community!
+                                </p>
+                            </div>
+                        </section>
+            
+                        <!-- Our Mission Section -->
+                        <section class="mission-section">
+                            <h2 class="pixel-text section-title"><i class="fas fa-bullseye"></i> Our Mission</h2>
+                            <p class="section-subtitle">What drives us every day</p>
+                            
+                            <div class="mission-grid">
+                                <div class="mission-item">
+                                    <div class="mission-icon">
+                                        <i class="fas fa-memory"></i>
+                                    </div>
+                                    <h3 class="pixel-text">Preserve Memories</h3>
+                                    <p>Help players save their Minecraft stories so they can look back years later and relive their adventures.</p>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-icon">
+                                        <i class="fas fa-hands-helping"></i>
+                                    </div>
+                                    <h3 class="pixel-text">Build Community</h3>
+                                    <p>Create a friendly space where Minecrafters can share ideas, inspire each other, and make new friends.</p>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h3 class="pixel-text">Spark Creativity</h3>
+                                    <p>Provide tools and inspiration to help players plan and execute their dream builds and adventures.</p>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-icon">
+                                        <i class="fas fa-laugh-beam"></i>
+                                    </div>
+                                    <h3 class="pixel-text">Spread Joy</h3>
+                                    <p>Make Minecraft even more enjoyable by celebrating every achievement, big or small!</p>
+                                </div>
+                            </div>
+                        </section>
+            
+                        <!-- Fun Facts Section -->
+                        <section class="creator-section" style="border-color: #FF6B6B;">
+                            <h2 class="pixel-text section-title"><i class="fas fa-star"></i> Fun Facts About Us</h2>
+                            <div class="story-content">
+                                <div class="story-text">
+                                    <ul style="color: #d0d0d0; line-height: 1.8; padding-left: 20px;">
+                                        <li>We've been playing Minecraft together since 2015 on the same server!</li>
+                                        <li>This journal website was inspired by our own messy collection of screenshots and notes.</li>
+                                        <li>Alex once built a working calculator in Minecraft using redstone (it took 3 weeks!).</li>
+                                        <li>Aicelle holds the record in our friend group for most cats collected in one house: 27!</li>
+                                        <li>We test every new feature by playing Minecraft together every Friday night.</li>
+                                        <li>Our first version of this journal was just a shared Google Doc back in 2020.</li>
+                                        <li>We've never actually defeated the Ender Dragon in our shared survival world... we're too busy building!</li>
+                                    </ul>
+                                </div>
+                                <div class="story-image">
+                                    <div class="story-block" style="border-color: #FF6B6B;">
+                                        <i class="fas fa-grin-stars"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+            
+                        <!-- Back Button -->
+                        <div class="back-button-container">
+                            <a href="index.php" class="pixel-button back-button">
+                                <i class="fas fa-arrow-left"></i> Back to Home
+                            </a>
+                            <p class="pixel-text" style="margin-top: 15px; font-size: 0.7rem; color: #b0b0b0;">
+                                P.S. You can also use your browser's back button to return to the previous page! ←
+                            </p>
+                        </div>
+                    </div>
+                </main>
+            
+                <!-- Footer -->
+                <footer class="minecraft-footer">
+                    <div class="container">
+                        <p class="pixel-text">Made with ❤️ by Alex & Aicelle | Minecraft Journal &copy; 2023</p>
+                        <div class="footer-links">
+                            <a href="index.php" class="pixel-text link"><i class="fas fa-home"></i> Home</a>
+                            <a href="#" class="pixel-text link"><i class="fas fa-envelope"></i> Contact Us</a>
+                            <a href="#" class="pixel-text link"><i class="fas fa-heart"></i> Support Our Work</a>
+                        </div>
+                    </div>
+                </footer>
+                <script>
+                    // Friendly greeting when page loads
+                    document.addEventListener('DOMContentLoaded', function() {
+                        console.log("%c✨ Welcome to our About page! ✨", "color: #5cdb5c; font-size: 18px; font-weight: bold;");
+                        console.log("%cThanks for checking out our story! We hope you love Minecraft Journal as much as we do!", "color: #4EE2EC; font-size: 14px;");
+                        
+                        // Add some interactive fun
+                        const creatorCards = document.querySelectorAll('.creator-card');
+                        creatorCards.forEach(card => {
+                            card.addEventListener('click', function() {
+                                this.style.transform = 'scale(0.98)';
+                                setTimeout(() => {
+                                    this.style.transform = '';
+                                }, 200);
+                            });
+                        });
+                    });
+                    
+                    // Make back button work with browser history
+                    document.querySelector('.back-button').addEventListener('click', function(e) {
+                        // Check if we came from another page in our site
+                        if (document.referrer && document.referrer.includes(window.location.hostname)) {
+                            e.preventDefault();
+                            window.history.back();
+                        }
+                    });
+                </script>
+            </body>
+            </html>

@@ -1,29 +1,64 @@
 <?php
-    require_once '../config/config.php';
+require_once 'session.php';
+require_once '../db/config.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $birthdate = $_POST['birthdate'];
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    $email = trim($_POST['email']);
+    $birthdate = $_POST['birthdate'];
+    $confirmPassword = $_POST['confirmPassword']; // Get confirm password
 
-        $password = password_hash($password, PASSWORD_DEFAULT);
+    // Server-side validation
+    if (empty($username) || empty($password) || empty($email) || empty($birthdate) || empty($confirmPassword)) {
+        $_SESSION['error_message'] = 'All fields are required.';
+        header('Location: signup.php');
+        exit();
+    }
 
-        $q = <<<SQL
-            INSERT INTO users (username, password_hash, email, date_of_birth, created_at) 
-            VALUES (:username, :password, :email, :birthdate, NOW()) SQL
-        ;
+    if ($password !== $confirmPassword) {
+        $_SESSION['error_message'] = 'Passwords do not match.';
+        header('Location: signup.php');
+        exit();
+    }
 
+    // Check if username or email already exists
+    $check_q = "SELECT id FROM users WHERE username = :username OR email = :email";
+    $check_stmt = $conn->prepare($check_q);
+    $check_stmt->bindParam(':username', $username);
+    $check_stmt->bindParam(':email', $email);
+    $check_stmt->execute();
+
+    if ($check_stmt->rowCount() > 0) {
+        $_SESSION['error_message'] = 'Username or email already exists.';
+        header('Location: signup.php');
+        exit();
+    }
+
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+    $q = "INSERT INTO users (username, password_hash, email, date_of_birth) VALUES (:username, :password_hash, :email, :birthdate)";
+
+    try {
         $stmt = $conn->prepare($q);
         $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password_hash', $password_hash); // Use password_hash here
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':birthdate', $birthdate);
         $stmt->execute();
 
+        $_SESSION['success_message'] = 'Account created successfully! Please log in.';
+        header('Location: index.php'); // Redirect to login page
+        exit();
+    } catch (PDOException $e) {
+        // Log the error for debugging purposes
+        error_log("Signup error: " . $e->getMessage());
+        $_SESSION['error_message'] = 'An error occurred during registration. Please try again.';
+        header('Location: signup.php');
+        exit();
     }
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -241,9 +276,45 @@
         .benefit-item:hover {
             border-color: #5cdb5c;
         }
+
+        /* Alert Messages */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            text-align: center;
+            color: white;
+            border-width: 3px;
+            border-style: solid;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .success-message {
+            background-color: rgba(92, 219, 92, 0.2);
+            border-color: #5cdb5c;
+        }
+
+        .error-message {
+            background-color: rgba(255, 77, 77, 0.2);
+            border-color: #ff4d4d;
+        }
     </style>
 </head>
 <body class="signup-page">
+    <?php
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="alert success-message">' . $_SESSION['success_message'] . '</div>';
+            unset($_SESSION['success_message']);
+        }
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="alert error-message">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']);
+        }
+    ?>
     <!-- Background -->
     <div class="background-image"></div>
     <div class="overlay"></div>
@@ -340,7 +411,7 @@
                     </div>
                     
                     <!-- Main Signup Form -->
-                    <form class="signup-form" id="signupForm" autocomplete="off" action="." method="POST"  novalidate>
+                    <form class="signup-form" id="signupForm" autocomplete="off" method="POST"  novalidate>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="signupUsername" class="pixel-text"><i class="fas fa-user"></i> Minecraft Username *</label>
@@ -468,30 +539,11 @@
                         </button>
                         
                         <div class="form-footer">
-                            <p class="pixel-text">Already have an account? <a href="index.html#login" class="link">Login here</a></p>
+                            <p class="pixel-text">Already have an account? <a href="login.php" class="link">Login here</a></p>
                         </div>
                     </form>
                     
-                    <!-- Success Message (Hidden by default) -->
-                    <div class="signup-success" id="successMessage">
-                        <div class="success-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h3 class="pixel-text" style="color: #5cdb5c;">Account Created Successfully! 🎉</h3>
-                        <p style="margin: 20px 0; color: #d0d0d0;">Welcome to the Minecraft Journal community! Your adventure begins now.</p>
-                        <p style="margin: 20px 0; color: #d0d0d0; font-size: 0.9rem;">
-                            <i class="fas fa-info-circle"></i> 
-                            Remember: This is a demo site. No actual account was created.
-                        </p>
-                        <div style="margin-top: 30px;">
-                            <a href="index.html" class="pixel-button large-button">
-                                <i class="fas fa-home"></i> Go to Homepage
-                            </a>
-                            <a href="index.html#login" class="pixel-button large-button secondary-btn" style="margin-left: 15px;">
-                                <i class="fas fa-sign-in-alt"></i> Login Now
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </section>
             
@@ -512,8 +564,8 @@
         <div class="container">
             <p class="pixel-text">Minecraft Journal &copy; 2023 - Start Your Adventure Today!</p>
             <div class="footer-links">
-                <a href="index.html" class="pixel-text link"><i class="fas fa-home"></i> Home</a>
-                <a href="about.html" class="pixel-text link"><i class="fas fa-info-circle"></i> About</a>
+                <a href="index.php" class="pixel-text link"><i class="fas fa-home"></i> Home</a>
+                <a href="about.php" class="pixel-text link"><i class="fas fa-info-circle"></i> About</a>
                 <a href="#" class="pixel-text link"><i class="fas fa-question-circle"></i> Help</a>
             </div>
         </div>
@@ -521,7 +573,7 @@
 
     <script>
         // Track where user came from
-        let previousPage = document.referrer || 'index.html';
+        let previousPage = document.referrer || 'index.php';
         
         // Password strength checker - INSTANT
         const passwordInput = document.getElementById('signupPassword');
@@ -595,78 +647,7 @@
         });
         
         // Form submission - INSTANT
-        document.getElementById('signupForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const username = document.getElementById('signupUsername').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = passwordInput.value;
-            const confirmPassword = confirmPasswordInput.value;
-            const birthdate = document.getElementById('birthdate').value;
-            const agreeTerms = document.getElementById('agreeTerms').checked;
-            
-            // Validation
-            let errors = [];
-            
-            if (username.length < 3) {
-                errors.push('Username must be at least 3 characters');
-            }
-            
-            if (!email.includes('@') || !email.includes('.')) {
-                errors.push('Please enter a valid email address');
-            }
-            
-            if (password.length < 8) {
-                errors.push('Password must be at least 8 characters');
-            }
-            
-            if (password !== confirmPassword) {
-                errors.push('Passwords do not match');
-            }
-            
-            if (!birthdate) {
-                errors.push('Please enter your date of birth');
-            } else {
-                const birthDate = new Date(birthdate);
-                const today = new Date();
-                const age = today.getFullYear() - birthDate.getFullYear();
-                if (age < 13) {
-                    errors.push('You must be at least 13 years old to register');
-                }
-            }
-            
-            if (!agreeTerms) {
-                errors.push('You must agree to the Terms & Conditions');
-            }
-            
-            // Show errors or success
-            if (errors.length > 0) {
-                alert('Please fix the following errors:\n\n' + errors.join('\n'));
-                return;
-            }
-            
-            // INSTANT: No loading state, immediate action
-            // Hide form, show success message immediately
-            document.getElementById('signupForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Update steps immediately
-            document.querySelectorAll('.step').forEach(step => {
-                step.classList.remove('active');
-            });
-            document.querySelectorAll('.step')[2].classList.add('active');
-            
-            // Clear form data immediately
-            document.getElementById('signupForm').reset();
-            strengthBar.className = 'strength-bar';
-            passwordMatchMessage.textContent = '';
-            
-            // Auto-redirect after 5 seconds (no animation)
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 5000);
-        });
+
         
         // Back button functionality - INSTANT
         document.getElementById('backButton').addEventListener('click', function() {
@@ -679,26 +660,7 @@
             }
         });
         
-        // Clear form on page load - INSTANT
-        window.addEventListener('load', function() {
-            document.getElementById('signupForm').reset();
-            strengthBar.className = 'strength-bar';
-            passwordMatchMessage.textContent = '';
-            
-            // Set max date for birthdate (13 years ago)
-            const today = new Date();
-            const maxDate = new Date(today.getFullYear() - 13, today.getMonth(), today.getDate());
-            document.getElementById('birthdate').max = maxDate.toISOString().split('T')[0];
-            
-            // Set min date (120 years ago)
-            const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
-            document.getElementById('birthdate').min = minDate.toISOString().split('T')[0];
-        });
-        
-        // Clear form when leaving page - INSTANT
-        window.addEventListener('beforeunload', function() {
-            document.getElementById('signupForm').reset();
-        });
+
     </script>
 </body>
 </html>
